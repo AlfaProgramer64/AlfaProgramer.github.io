@@ -1,11 +1,282 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>CTF Çözümlerim</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👨‍💻 AlfaProgramer64</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffd700;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            border: 2px solid #ffd700;
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px #ffd700);
+        }
+
+        .logo img {
+            max-width: 120px;
+            max-height: 120px;
+            border-radius: 25px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .language-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 2px solid #ffd700;
+            color: #ffd700;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .lang-btn:hover {
+            background: #ffd700;
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .lang-btn.active {
+            background: #ffd700;
+            color: #000;
+        }
+
+        .content {
+            min-height: 120px;
+            transition: all 0.5s ease;
+        }
+
+        .content.hidden {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .decorative-line {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ffd700, transparent);
+            margin: 30px auto;
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: #ffd700;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+            transform: translateY(-3px);
+            filter: drop-shadow(0 5px 10px rgba(255, 215, 0, 0.5));
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                font-size: 3rem;
+            }
+            
+            p {
+                font-size: 1.1rem;
+            }
+            
+            .lang-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Merhaba!</h1>
-  <p>Burası benim CTF çözümlerim ve notlarım.</p>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="logo.png" alt="Logo" />
+        </div>
+        
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+            <button class="lang-btn active" onclick="switchLanguage('tr', this)">Türkçe</button>
+            <button class="lang-btn" onclick="switchLanguage('en', this)">English</button>
+        </div>
+        
+        <!-- Content Area -->
+        <div class="content" id="content">
+            <h1 id="greeting">Merhaba!</h1>
+            <div class="decorative-line"></div>
+            <p id="description">
+                Burası benim yeni web sitem. CTF çözümlerim ve notlarım çok yakında burada olacak.
+            </p>
+        </div>
+        
+        <!-- Social Links (Optional) -->
+        <div class="social-links">
+            <a href="https://github.com/AlfaProgramer64" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            tr: {
+                greeting: "Merhaba!",
+                description: "Burası benim yeni web sitem. CTF çözümlerim ve notlarım çok yakında burada olacak."
+            },
+            en: {
+                greeting: "Hello!",
+                description: "This is my new website. My CTF solutions and notes will be here very soon."
+            }
+        };
+
+        let currentLang = 'tr';
+
+        function switchLanguage(lang, clickedButton) {
+            if (lang === currentLang) return;
+            
+            const content = document.getElementById('content');
+            const greeting = document.getElementById('greeting');
+            const description = document.getElementById('description');
+            const langBtns = document.querySelectorAll('.lang-btn');
+            
+            // Add fade effect
+            content.classList.add('hidden');
+            
+            setTimeout(() => {
+                greeting.textContent = translations[lang].greeting;
+                description.textContent = translations[lang].description;
+                
+                // Update active button
+                langBtns.forEach(btn => btn.classList.remove('active'));
+                if (clickedButton) {
+                    clickedButton.classList.add('active');
+                }
+                
+                currentLang = lang;
+                
+                // Remove fade effect
+                content.classList.remove('hidden');
+            }, 250);
+        }
+
+        // Add some interactive effects
+        document.addEventListener('mousemove', (e) => {
+            const container = document.querySelector('.container');
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            
+            container.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            document.querySelector('.container').style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        });
+    </script>
 </body>
 </html>
